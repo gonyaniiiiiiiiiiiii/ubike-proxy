@@ -2,6 +2,12 @@ import express from 'express';
 import fetch from 'node-fetch';
 
 const app = express();
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  next();
+});
+
 const PORT = process.env.PORT || 3000;
 
 const CLIENT_ID = process.env.TDX_CLIENT_ID;
